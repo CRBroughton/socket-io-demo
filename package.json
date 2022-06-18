@@ -4,6 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
+    "dev": "ts-node-dev --exit-child --respawn src/index.ts",
     "commit": "cz"
   },
   "config": {
