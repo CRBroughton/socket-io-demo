@@ -11,8 +11,11 @@ const io = new Server(server, {
   },
 })
 
-io.on('connection', (_socket) => {
+io.on('connection', (socket) => {
   console.log('a user connected')
+  socket.on('disconnect', () => {
+    console.log('user disconnected')
+  })
 })
 
 server.listen(3000, () => {
