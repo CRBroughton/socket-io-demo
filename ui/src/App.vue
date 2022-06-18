@@ -1,4 +1,7 @@
 <script setup lang="ts">
+import { io } from 'socket.io-client'
+
+io('ws://localhost:3000')
 </script>
 
 <template>
