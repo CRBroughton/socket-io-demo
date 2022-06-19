@@ -1,11 +1,26 @@
 <script setup lang="ts">
 import { io } from 'socket.io-client'
 
-io('ws://localhost:3000')
+interface Message {
+  id: number
+  message: string
+}
+
+const socket = io('ws://localhost:3000')
+const messages = ref<Message[]>([])
+
+socket.on('test', (arg: Message) => {
+  messages.value.push(arg)
+})
 </script>
 
 <template>
-  <router-view class="h-screen w-screen bg-gray-800" />
+  <div v-for="item in messages" :key="item.id">
+    <div>
+      <h1>{{ item.id }}</h1>
+      <p>{{ item.message }}</p>
+    </div>
+  </div>
 </template>
 
 <style>
